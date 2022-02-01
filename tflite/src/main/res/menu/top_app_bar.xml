@@ -8,11 +8,13 @@
             android:id="@+id/home"
             android:title="@string/home"
             android:contentDescription="@string/content_description_home"
+            android:icon="@drawable/ic_home"
             android:checked="true"
     />
     <item
             android:id="@+id/objectDetection"
             android:title="@string/objectDetection_title"
+            android:icon="@drawable/ic_camera"
             android:contentDescription="@string/content_description_object_detection"
     />
 
@@ -20,6 +22,8 @@
     <item
             android:id="@+id/logOut"
             android:title="@string/logOutTitle"
+            android:icon="@drawable/ic_logout"
+
     />
 
     </group>

@@ -9,6 +9,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class HomeActivity : AppCompatActivity() {
@@ -19,7 +21,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
 //        setSupportActionBar(findViewById(R.id.topAppBar))
 //
          topAppBar = findViewById(R.id.topAppBar)
@@ -28,6 +29,7 @@ class HomeActivity : AppCompatActivity() {
 
         topAppBar?.setNavigationOnClickListener {
             drawerLayout?.open()
+
         }
 
          navigationView = findViewById(R.id.navigation)
@@ -48,6 +50,9 @@ class HomeActivity : AppCompatActivity() {
                         this,
                         GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
                     ).signOut()
+
+                    // firebase user
+                    Firebase.auth.signOut()
                     // Go back to starting screen after logout
                     val SignInActivityIntent =  Intent(this, GoogleSignInActivity::class.java)
                     startActivity(SignInActivityIntent);
@@ -65,6 +70,7 @@ class HomeActivity : AppCompatActivity() {
             drawerLayout?.close()
             true
         }
+
 
     }
 

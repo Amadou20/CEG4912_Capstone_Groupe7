@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -166,6 +167,7 @@ class GoogleSignInActivity : AppCompatActivity() {
         val pass = password.editText?.text.toString()
         login(mail,pass)
     }
+
 
 
 }

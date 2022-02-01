@@ -45,6 +45,8 @@
             android:id="@+id/loginButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:icon="@drawable/ic_login"
+            app:iconGravity="textStart"
             android:onClick="loginAttempt"
             android:text="@string/login"
             app:layout_constraintStart_toStartOf="parent"
