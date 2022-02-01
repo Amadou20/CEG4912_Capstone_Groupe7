@@ -17,6 +17,7 @@
 package com.example.android.capstone.ceg
 
 import android.graphics.RectF
+import models.ReadAndWrite
 import org.tensorflow.lite.Interpreter
 import org.tensorflow.lite.support.image.TensorImage
 
@@ -31,6 +32,7 @@ class ObjectDetectionHelper(private val tflite: Interpreter, private val labels:
     private val locations = arrayOf(Array(OBJECT_COUNT) { FloatArray(4) })
     private val labelIndices =  arrayOf(FloatArray(OBJECT_COUNT))
     private val scores =  arrayOf(FloatArray(OBJECT_COUNT))
+
 
     private val outputBuffer = mapOf(
         0 to locations,

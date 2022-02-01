@@ -5,7 +5,7 @@
     <!-- Declare features -->
     <uses-feature android:name="android.hardware.camera"/> <!-- Declare permissions -->
     <uses-permission android:name="android.permission.CAMERA"/>
-    <!--            android:theme="@style/AppTheme"-->
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -14,8 +14,10 @@
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name="com.example.android.capstone.ceg.HomeActivity">
+        <activity android:name="com.example.android.capstone.ceg.SignupActivity">
 
+        </activity>
+        <activity android:name="com.example.android.capstone.ceg.HomeActivity">
         </activity>
         <activity android:name="com.example.android.capstone.ceg.GoogleSignInActivity">
             <intent-filter>

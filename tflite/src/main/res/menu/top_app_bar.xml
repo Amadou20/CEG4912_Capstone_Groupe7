@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group
+            android:id="@+id/group1"
+            android:checkableBehavior="single">
+    <item
+            android:id="@+id/home"
+            android:title="@string/home"
+            android:contentDescription="@string/content_description_home"
+            android:checked="true"
+    />
     <item
             android:id="@+id/objectDetection"
             android:title="@string/objectDetection_title"
             android:contentDescription="@string/content_description_object_detection"
-            app:showAsAction="never"
     />
 
+
     <item
-            android:id="@+id/obstacleDetection"
-            android:title="@string/obstacleDetection_title"
-            android:contentDescription="@string/content_description_obstacle_detection"
-            app:showAsAction="never"
+            android:id="@+id/logOut"
+            android:title="@string/logOutTitle"
     />
+
+    </group>
+
 </menu>

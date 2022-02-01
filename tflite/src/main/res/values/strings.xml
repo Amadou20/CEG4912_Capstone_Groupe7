@@ -25,13 +25,27 @@
 
     <string name="create">create Account</string>
 
+    <!--activity signup string-->
+    <string name="firstname">firstname</string>
+    <string name="lastname">lastname</string>
+    <string name="email">email</string>
+    <string name="confirmPass">Re-Password</string>
+    <string name="top_app_bar">Virtual Eye</string>
+
+
+
+
+
+
+
     <!--activity home string-->
     <string name="objectDetection_title">object Detection</string>
     <string name="obstacleDetection_title">obstacle Detection</string>
+    <string name="home">Home</string>
     <string name="content_description_object_detection">detect object around</string>
     <string name="content_description_obstacle_detection">detect object around</string>
-
-
+    <string name="content_description_home">just home page</string>
+    <string name="logOutTitle">Logout</string>
 
 
 </resources>

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.android.example.camerax.tflite.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -12,6 +13,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
@@ -27,6 +30,12 @@ class GoogleSignInActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
 
     private var signInButton: SignInButton ? = null
+    private lateinit var loginButton: Button
+
+    private lateinit var email:TextInputLayout
+    private lateinit var password:TextInputLayout
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,10 +64,13 @@ class GoogleSignInActivity : AppCompatActivity() {
             signIn()
         })
 
+        email = findViewById(R.id.emailLogin)
+        password = findViewById(R.id.passwordLogin)
+
+
+        loginButton = findViewById(R.id.loginButton)
+
     }
-
-
-
 
     // [START on_start_check_user]
     override fun onStart() {
@@ -84,8 +96,8 @@ class GoogleSignInActivity : AppCompatActivity() {
 
                 //Start New Activity
                 val homeActivityIntent =  Intent(this, HomeActivity::class.java)
-                startActivity(homeActivityIntent);
-                finish();
+                startActivity(homeActivityIntent)
+                finish()
 
 
             } catch (e: ApiException) {
@@ -122,13 +134,37 @@ class GoogleSignInActivity : AppCompatActivity() {
     }
     // [END signin]
 
+    public fun startSignupActivity(v:View){
+        val signupActivityIntent =  Intent(this, SignupActivity::class.java)
+        startActivity(signupActivityIntent);
+    }
+
     private fun updateUI(user: FirebaseUser?) {
 
+    }
+
+    fun login(email:String, password:String){
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, OnCompleteListener { task ->
+            if(task.isSuccessful) {
+                Toast.makeText(this, "Successfully Logged In", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }else {
+                Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     companion object {
         private const val TAG = "GoogleActivity"
         private const val RC_SIGN_IN = 9001
+    }
+
+    fun loginAttempt(view: android.view.View) {
+        val mail = email.editText?.text.toString()
+        val pass = password.editText?.text.toString()
+        login(mail,pass)
     }
 
 
