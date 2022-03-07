@@ -8,10 +8,12 @@ import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.graphics.RectF
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
 import android.util.Log
 import android.util.Size
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.AspectRatio
 import androidx.camera.core.CameraSelector
@@ -33,6 +35,7 @@ import org.tensorflow.lite.support.image.TensorImage
 import org.tensorflow.lite.support.image.ops.ResizeOp
 import org.tensorflow.lite.support.image.ops.ResizeWithCropOrPadOp
 import org.tensorflow.lite.support.image.ops.Rot90Op
+import java.util.*
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import kotlin.math.min
@@ -40,7 +43,8 @@ import kotlin.random.Random
 
 
 /** Activity that displays the camera and performs object detection on the incoming frames */
-class CameraActivity : AppCompatActivity() {
+class CameraActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
+    private lateinit var t1: TextToSpeech
 
     private lateinit var activityCameraBinding: ActivityCameraBinding
 
@@ -121,7 +125,23 @@ class CameraActivity : AppCompatActivity() {
             // Re-enable camera controls
             it.isEnabled = true
         }
+
+        t1 = TextToSpeech(this,this)
+
     }
+
+    override fun onInit(status:Int){
+            if(status == TextToSpeech.SUCCESS){
+               t1.setLanguage(Locale.CANADA)
+            }
+
+            if(status == TextToSpeech.LANG_MISSING_DATA){
+                Log.e("TTS", "tts initialised")
+            }
+            else{
+                Log.e("TTS", "Initilization Failed!")
+            }
+        }
 
     override fun onDestroy() {
 
@@ -218,6 +238,8 @@ class CameraActivity : AppCompatActivity() {
         }, ContextCompat.getMainExecutor(this))
     }
 
+
+
     private fun reportPrediction(
         prediction: ObjectDetectionHelper.ObjectPrediction?
     ) = activityCameraBinding.viewFinder.post {
@@ -231,6 +253,7 @@ class CameraActivity : AppCompatActivity() {
 
         // Location has to be mapped to our local coordinates
         val location = mapOutputCoordinates(prediction.location)
+
         // add to firebase
         ReadAndWrite.initializeDbRef()
         ReadAndWrite.writeNewObject(prediction.label,prediction.score)
@@ -246,6 +269,8 @@ class CameraActivity : AppCompatActivity() {
         // Make sure all UI elements are visible
         activityCameraBinding.boxPrediction.visibility = View.VISIBLE
         activityCameraBinding.textPrediction.visibility = View.VISIBLE
+        t1.speak(prediction.label,TextToSpeech.QUEUE_FLUSH, null,null)
+
     }
 
     /**
