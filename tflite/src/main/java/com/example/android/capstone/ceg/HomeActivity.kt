@@ -9,6 +9,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -72,9 +73,29 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    fun startObjDetection(view: android.view.View) {
+        //Start Object Detection Activity
+        val objectDetectorIntent =  Intent(this, CameraActivity::class.java)
+        startActivity(objectDetectorIntent);
+        finish()
+        true
+    }
 
+    fun logout(view: android.view.View) {
+        //Logout
+        GoogleSignIn.getClient(
+            this,
+            GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).build()
+        ).signOut()
 
-
+        // firebase user
+        Firebase.auth.signOut()
+        // Go back to starting screen after logout
+        val SignInActivityIntent =  Intent(this, GoogleSignInActivity::class.java)
+        startActivity(SignInActivityIntent);
+        finish()
+        true
+    }
 
 
 }

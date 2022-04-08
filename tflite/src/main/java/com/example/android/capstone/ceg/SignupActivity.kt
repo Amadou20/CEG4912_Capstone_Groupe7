@@ -18,13 +18,14 @@ import models.ReadAndWrite
 import models.User
 
 class SignupActivity : AppCompatActivity() {
-
+//hello
     private var firstnameLay:TextInputLayout? = null
     private var lastnameLay:TextInputLayout? = null
     private var emailLay:TextInputLayout? = null
     private var passwordLay:TextInputLayout? = null
     private var confirmPassLay:TextInputLayout? = null
     private var register: Button? = null
+    private var delletesddff: Button? = null
 
     private lateinit var auth: FirebaseAuth
 

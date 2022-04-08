@@ -12,7 +12,7 @@
             android:id="@+id/drawerLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:openDrawer="start">
+            tools:openDrawer="start" tools:layout_editor_absoluteY="-46dp" tools:layout_editor_absoluteX="0dp">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
@@ -52,6 +52,20 @@
         />
 
     </androidx.drawerlayout.widget.DrawerLayout>
+    <ImageButton
+            android:layout_width="160dp"
+            android:layout_height="160dp" app:srcCompat="@drawable/ic_camera" android:id="@+id/imageButton"
+            app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="200dp"
+            app:layout_constraintStart_toStartOf="parent"
+            android:onClick="startObjDetection"
+            android:layout_marginEnd="20dp" app:layout_constraintEnd_toEndOf="parent"/>
+    <ImageButton
+            android:layout_width="160dp"
+            android:layout_height="160dp" app:srcCompat="@drawable/ic_logout" android:id="@+id/exit"
+            android:onClick="logout"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toBottomOf="@+id/imageButton"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="@+id/drawerLayout"
+            android:layout_marginStart="8dp" android:layout_marginEnd="8dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

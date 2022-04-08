@@ -18,17 +18,18 @@
     <string name="app_name">Camera Object Detector</string>
     <string name="capture_button_alt">Capture</string>
     <string name="unknown">UNKNOWN</string>
-    <string name="label">username</string>
-    <string name="login">login</string>
-    <string name="pass">password</string>
+    <string name="logo">Logo</string>
+    <string name="label">Username</string>
+    <string name="login">Login</string>
+    <string name="pass">Password</string>
     <string name="page_title">VirtualEye</string>
 
-    <string name="create">create Account</string>
+    <string name="create">Create Account</string>
 
     <!--activity signup string-->
-    <string name="firstname">firstname</string>
+    <string name="firstname">Firstname</string>
     <string name="lastname">lastname</string>
-    <string name="email">email</string>
+    <string name="email">Email</string>
     <string name="confirmPass">Re-Password</string>
     <string name="top_app_bar">Virtual Eye</string>
 
