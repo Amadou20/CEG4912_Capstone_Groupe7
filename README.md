@@ -23,7 +23,7 @@ def init() :
     pwm2 = gpio.PWM(pwmPin2, 1000) # Set Frequency to 1 KHz
     pwm2.start(0) # Set the starting Duty Cycle
 
-    def destroy() :
+def destroy() :
     gpio.setmode(gpio.BCM)
     pwm.stop()
     gpio.output(pwmPin, gpio.LOW)
@@ -31,7 +31,7 @@ def init() :
     gpio.output(pwmPin2, gpio.LOW)
     gpio.cleanup
 
-    def right(tf) :
+def right(tf) :
     init()
     gpio.output(17, True)
     gpio.output(22, False)
@@ -42,7 +42,7 @@ def init() :
     time.sleep(tf)
     destroy()
 
-    def left(tf) :
+def left(tf) :
     init()
     gpio.output(17, True)
     gpio.output(22, False)
@@ -53,7 +53,7 @@ def init() :
     time.sleep(tf)
     destroy()
 
-    def forward(tf) :
+def forward(tf) :
     init()
     gpio.output(25, True)
     gpio.output(5, False)
